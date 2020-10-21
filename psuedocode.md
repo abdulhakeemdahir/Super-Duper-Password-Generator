@@ -14,7 +14,7 @@ THEN I am presented with a series of prompts for password criteria
 WHEN prompted for password criteria
 THEN I select which criteria to include in the password
 WHEN prompted for the length of the password
-THEN I choose a length of at least 8 characters and no more than 128 characters if (prompt => 8 <= 128;)
+THEN I choose a length of at least 8 characters and no more than 128 characters if (prompt => 8 && prompt <= 128;)
 WHEN prompted for character types to include in the password
 THEN I choose lowercase, uppercase, numeric, and/or special characters
 WHEN I answer each prompt
@@ -43,5 +43,9 @@ var uppercase = ["A","B","C",]
 var lowercase = ["a","b","c",]
 var uppercase = ["1","2","3"]
 var special = ["!","_","@",]
+
+Add these to empty array
+
+*have multile functions, multiple loops, multiple conditionals, array push
 
 Character Length = userDefined = []
