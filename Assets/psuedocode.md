@@ -49,3 +49,7 @@ Add these to empty array
 *have multile functions, multiple loops, multiple conditionals, array push
 
 Character Length = userDefined = []
+
+if (key[i] === true){
+    array.push
+}

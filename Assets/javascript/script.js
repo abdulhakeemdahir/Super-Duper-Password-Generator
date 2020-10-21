@@ -14,6 +14,7 @@ let special = [".","!","@","#","$","%","^","&","*","(",")","_","+","-","="];
 
 
 function writePassword() {
+  var passwordWord = "";
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
@@ -24,39 +25,54 @@ function writePassword() {
     const passwordLength = prompt("Please input how long you want your password to be, from 8 to 128 characters. Input only a number!");
 
         // All of my prompts and confirmations for boolean values
-    const wantUpperCase = confirm("Do you want UpperCase Letters in your password?");
-    const wantLowerCase = confirm("Do you want LowerCase Letters in your password?");
-    const wantNumber = confirm("Do you want Numbers in your password?");
-    const wantSpecial = confirm("Do you want Special Letters in your password?");
+    
+    let userChoices = []
+    let wantUpperCase = confirm("Do you want UpperCase Letters in your password?");
+    let wantLowerCase = confirm("Do you want LowerCase Letters in your password?");
+    let wantNumber = confirm("Do you want Numbers in your password?");
+    let wantSpecial = confirm("Do you want Special Letters in your password?");
+        
+    for  (let i = 0; (passwordWord.length < passwordLength && 8 <= passwordLength && passwordLength <= 128); i++){
+      let randomUpper = Math.floor(Math.random() * upperCase.length);
+      let upperIndex = upperCase[randomUpper];
 
-    while (passwordWord.length < passwordLength && 8 <= passwordLength && passwordLength <= 128){
-      randomUpper = Math.floor(Math.random() * upperCase.length);
-      upperIndex = upperCase[randomUpper];
+      let randomLower = Math.floor(Math.random() * lowerCase.length);
+      let lowerIndex = lowerCase[randomLower];
 
-      randomLower = Math.floor(Math.random() * lowerCase.length);
-      lowerIndex = lowerCase[randomLower];
+      let randomNumber = Math.floor(Math.random() * number.length);
+      let numberIndex = number[randomNumber];
 
-      randomNumber = Math.floor(Math.random() * number.length);
-      numberIndex = number[randomNumber];
+      let randomSpecial = Math.floor(Math.random() * special.length);
+      let specialIndex = special[randomSpecial];
 
-      randomSpecial = Math.floor(Math.random() * special.length);
-      specialIndex = special[randomSpecial];
+      if (wantUpperCase) {
+        userChoices.push(upperIndex);
+      }
 
-      randomArray = [upperIndex, lowerIndex, numberIndex, specialIndex];
+      if (wantLowerCase) {
+        userChoices.push(lowerIndex);
+      }
 
-      randomMix = Math.floor(Math.random() * randomArray.length);
-      randomIndex = randomArray[randomMix];
+      if (wantNumber) {
+        userChoices.push(numberIndex);
+      }
+
+      if (wantSpecial) {
+        userChoices.push(specialIndex);
+      }
       
+
+      randomMix = Math.floor(Math.random() * userChoices.length);
+      randomIndex = userChoices[randomMix];
+
       passwordWord = randomIndex + passwordWord;
       console.log(passwordWord);
        }
 
        return passwordWord;
+       
 
   }
-
 }
-
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
