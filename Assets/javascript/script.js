@@ -23,7 +23,10 @@ function writePassword() {
 
   function generatePassword(){
     const passwordLength = prompt("Please input how long you want your password to be, from 8 to 128 characters. Input only a number!");
-
+    if (!(passwordWord.length < passwordLength && 8 <= passwordLength && passwordLength <= 128)){
+      alert("Please select ONLY characters between 8 and 128, thank you!");
+      return;
+    }
         // All of my prompts and confirmations for boolean values
     
     let userChoices = []
